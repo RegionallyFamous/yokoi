@@ -110,7 +110,7 @@ export default function Home() {
             >
               <img
                 src="/art/swansong-desktop.webp"
-                alt="A translucent vertical handheld floating above a compact silver desktop computer in a surreal indigo game laboratory"
+                alt="A hardware-faithful translucent blue WonderSwan Color displayed above a compact silver desktop computer in an indigo laboratory"
               />
             </a>
             <div className="card-copy">
@@ -147,7 +147,7 @@ export default function Home() {
             >
               <img
                 src="/art/swansong-core.webp"
-                alt="A translucent horizontal WonderSwan opened like a scientific specimen to reveal a glowing FPGA and circuit board"
+                alt="A translucent blue WonderSwan Color hovering above a separate exposed FPGA development board on an acrylic platform"
               />
             </a>
             <div className="card-copy">
@@ -184,7 +184,7 @@ export default function Home() {
             >
               <img
                 src="/art/wonderswan-homebrew.webp"
-                alt="Translucent cartridges connected to miniature original pixel-art worlds on an indigo homebrew workbench"
+                alt="A WonderSwan Color and thin black cartridges with exposed gold edge connectors surrounded by miniature original pixel-art worlds"
               />
             </a>
             <div className="card-copy">
