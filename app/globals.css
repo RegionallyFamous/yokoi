@@ -691,7 +691,7 @@ footer {
 .project-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-left: 2px solid var(--ink);
   border-right: 2px solid var(--ink);
 }
@@ -707,7 +707,7 @@ footer {
   transition: background 180ms ease;
 }
 
-.project-card:nth-child(odd) {
+.project-card:not(:last-child) {
   border-right: 2px solid var(--ink);
 }
 
@@ -734,6 +734,14 @@ footer {
   background: var(--pink);
 }
 
+.status-desktop {
+  background: var(--pink);
+}
+
+.status-core {
+  background: var(--cyan);
+}
+
 .card-visual {
   margin: 8px 0 27px;
   position: relative;
@@ -741,6 +749,28 @@ footer {
   border: 2px solid var(--ink);
   border-radius: 18px;
   background: var(--ink);
+}
+
+.project-art {
+  display: block;
+  background: #090d35;
+}
+
+.project-art img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.project-card:hover .project-art img {
+  transform: scale(1.025);
+}
+
+.project-art:focus-visible {
+  outline: 4px solid var(--pink);
+  outline-offset: 4px;
 }
 
 .swan-visual {
@@ -1079,6 +1109,22 @@ footer > div:first-child {
     display: none;
   }
 
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card {
+    border-right: 0;
+  }
+
+  .project-card:first-child {
+    border-right: 2px solid var(--ink);
+  }
+
+  .project-card:last-child {
+    grid-column: 1 / -1;
+  }
+
   .wonderswan-shell {
     grid-template-columns: 72px minmax(0, 1fr) 76px;
     gap: 10px;
@@ -1261,6 +1307,14 @@ footer > div:first-child {
 
   .project-card:nth-child(odd) {
     border-right: 0;
+  }
+
+  .project-card:first-child {
+    border-right: 0;
+  }
+
+  .project-card:last-child {
+    grid-column: auto;
   }
 
   .patch-visual {

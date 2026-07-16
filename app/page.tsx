@@ -1,4 +1,9 @@
-const repoUrl = "https://github.com/RegionallyFamous/swansong-core";
+const githubOrgUrl = "https://github.com/RegionallyFamous";
+const desktopRepoUrl = "https://github.com/RegionallyFamous/SwanSong-Desktop";
+const coreRepoUrl = "https://github.com/RegionallyFamous/swansong-core";
+const storyForgeRepoUrl = "https://github.com/RegionallyFamous/swansong-story-forge";
+const homebrewReposUrl =
+  "https://github.com/orgs/RegionallyFamous/repositories?q=topic%3Ahomebrew";
 
 export default function Home() {
   return (
@@ -10,9 +15,11 @@ export default function Home() {
         <span className="header-tagline">Tools for a strange little handheld</span>
         <nav aria-label="Main navigation">
           <a href="#projects">Projects</a>
-          <a href="#downloads">Downloads</a>
+          <a href={homebrewReposUrl} target="_blank" rel="noreferrer">
+            Homebrew <span aria-hidden="true">↗</span>
+          </a>
           <a href="#about">About</a>
-          <a href={repoUrl} target="_blank" rel="noreferrer">
+          <a href={githubOrgUrl} target="_blank" rel="noreferrer">
             GitHub <span aria-hidden="true">↗</span>
           </a>
         </nav>
@@ -46,8 +53,8 @@ export default function Home() {
             openFPGA work, odd hardware, printable objects, and useful downloads.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#downloads">
-              Browse the files <span aria-hidden="true">↓</span>
+            <a className="button button-primary" href="#projects">
+              Browse the projects <span aria-hidden="true">↓</span>
             </a>
             <a className="button button-ghost" href="#about">
               What is Yokoi?
@@ -80,146 +87,124 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <span className="section-kicker">THE USEFUL PILE</span>
-            <h2 id="downloads">Downloads &amp; projects</h2>
+            <h2>Projects</h2>
           </div>
           <p>
-            Small, documented things for playing, building, organizing, and
-            preserving the weirdest handheld on your shelf.
+            Three open workbenches for playing, building, and making strange
+            new things for WonderSwan.
           </p>
         </div>
 
         <div className="project-grid">
-          <article className="project-card project-swan">
+          <article className="project-card project-desktop">
             <div className="card-topline">
-              <span>01 / OPENFPGA</span>
-              <span className="status status-dev">IN DEVELOPMENT</span>
+              <span>01 / NATIVE PLAYER</span>
+              <span className="status status-desktop">MACOS</span>
             </div>
-            <div className="card-visual swan-visual" aria-hidden="true">
-              <div className="scanlines" />
-              <img src="/favicon.png" alt="" />
-              <span>SWAN<br />SONG</span>
-            </div>
+            <a
+              className="card-visual project-art"
+              href={desktopRepoUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open the SwanSong Desktop repository"
+            >
+              <img
+                src="/art/swansong-desktop.webp"
+                alt="A translucent vertical handheld floating above a compact silver desktop computer in a surreal indigo game laboratory"
+              />
+            </a>
             <div className="card-copy">
-              <h3>Swan Song</h3>
+              <h3>SwanSong Desktop</h3>
               <p>
-                A WonderSwan and WonderSwan Color core built to feel at home on
-                Analogue Pocket.
+                A private, native WonderSwan player and translation workbench
+                designed for the Mac.
               </p>
-              <ul className="chip-list" aria-label="Swan Song features">
-                <li>VERTICAL PLAY</li>
-                <li>PER-GAME SAVES</li>
-                <li>DISPLAY MODES</li>
+              <ul className="chip-list" aria-label="SwanSong Desktop features">
+                <li>NATIVE MACOS</li>
+                <li>ARES ENGINE</li>
+                <li>TRANSLATION LAB</li>
               </ul>
             </div>
             <div className="card-actions">
-              <span>No verified public release yet</span>
-              <a href={repoUrl} target="_blank" rel="noreferrer">
-                Read field notes <span aria-hidden="true">↗</span>
+              <span>PUBLIC REPOSITORY</span>
+              <a href={desktopRepoUrl} target="_blank" rel="noreferrer">
+                View on GitHub <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <article className="project-card project-controller">
+          <article className="project-card project-core">
             <div className="card-topline">
-              <span>02 / HARDWARE</span>
-              <span className="status">FAB FILES</span>
+              <span>02 / OPENFPGA</span>
+              <span className="status status-core">ANALOGUE POCKET</span>
             </div>
-            <div className="card-visual photo-visual">
+            <a
+              className="card-visual project-art"
+              href={coreRepoUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open the SwanSong Core repository"
+            >
               <img
-                src="/art/swantroller-top.png"
-                alt="Top-side rendering of the Swantroller RP2040 controller board"
+                src="/art/swansong-core.webp"
+                alt="A translucent horizontal WonderSwan opened like a scientific specimen to reveal a glowing FPGA and circuit board"
               />
-              <span className="visual-label">BOARD / REV. B</span>
-            </div>
+            </a>
             <div className="card-copy">
-              <h3>Swantroller RP2040</h3>
+              <h3>SwanSong Core</h3>
               <p>
-                Fabrication files, assembly data, firmware, and careful order
-                notes for a modern controller adapter.
+                WonderSwan and WonderSwan Color rebuilt for Analogue Pocket,
+                with open source, documentation, and reproducible builds.
               </p>
-              <ul className="chip-list" aria-label="Swantroller files">
-                <li>GERBERS</li>
-                <li>BOM + CPL</li>
-                <li>UF2</li>
+              <ul className="chip-list" aria-label="SwanSong Core features">
+                <li>OPENFPGA</li>
+                <li>VERTICAL PLAY</li>
+                <li>WS + WSC</li>
+              </ul>
+            </div>
+            <div className="card-actions">
+              <span>PUBLIC REPOSITORY</span>
+              <a href={coreRepoUrl} target="_blank" rel="noreferrer">
+                View on GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article className="project-card project-homebrew">
+            <div className="card-topline">
+              <span>03 / MAKE GAMES</span>
+              <span className="status">HOMEBREW</span>
+            </div>
+            <a
+              className="card-visual project-art"
+              href={homebrewReposUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Browse the Regionally Famous WonderSwan homebrew repositories"
+            >
+              <img
+                src="/art/wonderswan-homebrew.webp"
+                alt="Translucent cartridges connected to miniature original pixel-art worlds on an indigo homebrew workbench"
+              />
+            </a>
+            <div className="card-copy">
+              <h3>Homebrew Workshop</h3>
+              <p>
+                Tools, example games, and graphics-first workflows for building
+                original WonderSwan Color projects.
+              </p>
+              <ul className="chip-list" aria-label="Homebrew workshop features">
+                <li>STORY FORGE</li>
+                <li>EXAMPLE GAMES</li>
+                <li>WSC TOOLS</li>
               </ul>
             </div>
             <div className="card-actions card-actions-split">
-              <a
-                href="/downloads/swantroller-rp2040-order-package.zip"
-                download
-              >
-                Order package <span aria-hidden="true">↓</span>
+              <a href={storyForgeRepoUrl} target="_blank" rel="noreferrer">
+                Story Forge <span aria-hidden="true">↗</span>
               </a>
-              <a href="/downloads/swantroller-rp2040.uf2" download>
-                Firmware <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </article>
-
-          <article className="project-card project-organizer">
-            <div className="card-topline">
-              <span>03 / PRINTABLE</span>
-              <span className="status">3 × 3</span>
-            </div>
-            <div className="card-visual photo-visual organizer-visual">
-              <img
-                src="/art/cartridge-organizer.png"
-                alt="Rendered preview of a stepped nine-cartridge WonderSwan organizer"
-              />
-              <span className="visual-label">207.6 × 57.8 × 47 MM</span>
-            </div>
-            <div className="card-copy">
-              <h3>Cartridge Organizer</h3>
-              <p>
-                A support-free, stepped display for nine standard cartridges,
-                with an editable source and a tiny fit test.
-              </p>
-              <ul className="chip-list" aria-label="Cartridge organizer files">
-                <li>STL</li>
-                <li>OPENSCAD</li>
-                <li>FIT TEST</li>
-              </ul>
-            </div>
-            <div className="card-actions card-actions-triple">
-              <a href="/downloads/wonderswan-organizer-3x3.stl" download>
-                STL <span aria-hidden="true">↓</span>
-              </a>
-              <a href="/downloads/wonderswan-slot-clearance-test.stl" download>
-                Fit test <span aria-hidden="true">↓</span>
-              </a>
-              <a href="/downloads/wonderswan-organizer.scad" download>
-                Source <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </article>
-
-          <article className="project-card project-patcher">
-            <div className="card-topline">
-              <span>04 / WORDPRESS</span>
-              <span className="status">LOCAL ONLY</span>
-            </div>
-            <div className="card-visual patch-visual" aria-hidden="true">
-              <span className="patch-file">.BPS</span>
-              <span className="patch-plus">+</span>
-              <span className="patch-file patch-file-two">.IPS</span>
-              <span className="patch-result">VERIFIED OUTPUT ✓</span>
-            </div>
-            <div className="card-copy">
-              <h3>Yokoi ROM Patcher</h3>
-              <p>
-                A WordPress block for publishing translation patches. ROMs are
-                validated, patched, and verified entirely in the browser.
-              </p>
-              <ul className="chip-list" aria-label="ROM patcher features">
-                <li>IPS + BPS</li>
-                <li>SHA-256</li>
-                <li>NO UPLOADS</li>
-              </ul>
-            </div>
-            <div className="card-actions">
-              <span>GPL-2.0-or-later · 26 KB</span>
-              <a href="/downloads/yokoi-rom-patcher.zip" download>
-                Plugin ZIP <span aria-hidden="true">↓</span>
+              <a href={homebrewReposUrl} target="_blank" rel="noreferrer">
+                All homebrew <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
@@ -272,7 +257,7 @@ export default function Home() {
         </div>
         <div className="footer-links">
           <a href="#top">Back to top ↑</a>
-          <a href={repoUrl} target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href={githubOrgUrl} target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </footer>
     </main>
