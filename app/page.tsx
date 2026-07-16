@@ -71,8 +71,8 @@ export default function Home() {
           <div className="art-orbit art-orbit-one" aria-hidden="true" />
           <div className="art-orbit art-orbit-two" aria-hidden="true" />
           <img
-            src="/art/yokoi-workbench-hero.png"
-            alt="A surreal translucent handheld on an indigo electronics workbench, surrounded by ribbon cables, cartridges, and a floating paper swan"
+            src="/art/yokoi-workbench-hero-v2.png"
+            alt="A surreal translucent WonderSwan on an indigo electronics workbench, surrounded by ribbon cables, cartridges, and a floating paper swan"
           />
           <span className="sticker sticker-top">ODD HARDWARE INSIDE</span>
           <span className="sticker sticker-bottom">Y / SWAN LAB</span>
