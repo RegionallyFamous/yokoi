@@ -303,6 +303,64 @@ nav a:hover {
   transform: none;
 }
 
+/* Calm, conventional site header. The older hardware-detail rules above are
+   retained only for historical layout compatibility and have no matching UI. */
+.site-header {
+  min-height: 84px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 12px 20px;
+  border: 1px solid rgba(18, 17, 47, 0.12);
+  border-radius: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.header-logo {
+  display: block;
+  line-height: 0;
+}
+
+.header-logo img {
+  width: 215px;
+  height: auto;
+  display: block;
+}
+
+.header-tagline {
+  color: #6a667d;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  align-self: center;
+  color: var(--ink);
+  font-size: 10px;
+}
+
+.site-header nav a {
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+}
+
+.site-header nav a:hover {
+  color: #2f6fce;
+  border-color: #2f6fce;
+  background: transparent;
+}
+
 .ticker {
   border-bottom: 2px solid var(--ink-deep);
   color: var(--ink);
@@ -1058,6 +1116,31 @@ footer > div:first-child {
   .site-header {
     margin-top: 13px;
     margin-bottom: 17px;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 12px 14px 10px;
+  }
+
+  .header-logo img {
+    width: 172px;
+  }
+
+  .header-tagline {
+    display: none;
+  }
+
+  .site-header nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(18, 17, 47, 0.12);
+    font-size: 8px;
+  }
+
+  .site-header nav a {
+    padding: 4px 0;
   }
 
   .wonderswan-shell {

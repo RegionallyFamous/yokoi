@@ -3,54 +3,19 @@ const repoUrl = "https://github.com/RegionallyFamous/swansong-core";
 export default function Home() {
   return (
     <main>
-      <header className="site-header" aria-label="Yokoi WonderSwan navigation">
-        <div className="wonderswan-shell">
-          <div className="wonderswan-left" aria-hidden="true">
-            <div className="ws-pad ws-pad-x">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="ws-pad ws-pad-y">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-
-          <div className="wonderswan-screen">
-            <div className="screen-brand-row">
-              <a className="brand" href="#top" aria-label="Yokoi home">
-                <span className="brand-word">YOKOI</span>
-              </a>
-              <span className="header-note">Tools for a strange little handheld</span>
-            </div>
-
-            <nav aria-label="Main navigation">
-              <a href="#projects">Projects</a>
-              <a href="#downloads">Downloads</a>
-              <a href="#about">About</a>
-              <a href={repoUrl} target="_blank" rel="noreferrer">
-                GitHub <span aria-hidden="true">↗</span>
-              </a>
-            </nav>
-          </div>
-
-          <div className="wonderswan-right" aria-hidden="true">
-            <div className="ws-speaker">
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="ws-ab-buttons">
-              <span>B</span>
-              <span>A</span>
-            </div>
-          </div>
-        </div>
+      <header className="site-header">
+        <a className="header-logo" href="#top" aria-label="Yokoi home">
+          <img src="/art/yokoi-logo.png" alt="Yokoi" />
+        </a>
+        <span className="header-tagline">Tools for a strange little handheld</span>
+        <nav aria-label="Main navigation">
+          <a href="#projects">Projects</a>
+          <a href="#downloads">Downloads</a>
+          <a href="#about">About</a>
+          <a href={repoUrl} target="_blank" rel="noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
       </header>
 
       <div className="ticker" aria-hidden="true">
