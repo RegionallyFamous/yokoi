@@ -306,12 +306,12 @@ nav a:hover {
 /* Calm, conventional site header. The older hardware-detail rules above are
    retained only for historical layout compatibility and have no matching UI. */
 .site-header {
-  min-height: 84px;
+  min-height: 104px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 32px;
-  padding: 12px 20px;
+  gap: 36px;
+  padding: 16px 24px;
   border: 1px solid rgba(18, 17, 47, 0.12);
   border-radius: 14px;
   color: var(--ink);
@@ -325,7 +325,7 @@ nav a:hover {
 }
 
 .header-logo img {
-  width: 215px;
+  width: 255px;
   height: auto;
   display: block;
 }
@@ -333,19 +333,21 @@ nav a:hover {
 .header-tagline {
   color: #6a667d;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   align-self: center;
   color: var(--ink);
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .site-header nav a {
@@ -1069,6 +1071,10 @@ footer > div:first-child {
 }
 
 @media (max-width: 1100px) {
+  .header-tagline {
+    display: none;
+  }
+
   .header-note {
     display: none;
   }
@@ -1117,12 +1123,12 @@ footer > div:first-child {
     margin-top: 13px;
     margin-bottom: 17px;
     grid-template-columns: 1fr;
-    gap: 9px;
-    padding: 12px 14px 10px;
+    gap: 12px;
+    padding: 16px 18px 14px;
   }
 
   .header-logo img {
-    width: 172px;
+    width: 210px;
   }
 
   .header-tagline {
@@ -1133,14 +1139,14 @@ footer > div:first-child {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    padding-top: 8px;
+    gap: 12px;
+    padding-top: 12px;
     border-top: 1px solid rgba(18, 17, 47, 0.12);
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .site-header nav a {
-    padding: 4px 0;
+    padding: 6px 0;
   }
 
   .wonderswan-shell {
