@@ -68,13 +68,159 @@ main {
 
 .site-header {
   width: min(1500px, calc(100% - 64px));
-  height: 92px;
-  margin: 0 auto;
+  margin: 22px auto 25px;
+}
+
+.wonderswan-shell {
+  min-height: 176px;
+  position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 104px minmax(0, 1fr) 120px;
   align-items: center;
-  gap: 30px;
-  border-bottom: 1px solid var(--line);
+  gap: 18px;
+  padding: 17px 22px 21px;
+  border: 3px solid var(--cream);
+  border-radius: 34px 42px 38px 31px;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, transparent 0 12%, rgba(204, 255, 54, 0.24) 12.1% 12.35%, transparent 12.45% 88%, rgba(81, 231, 255, 0.26) 88.1% 88.35%, transparent 88.45%),
+    linear-gradient(125deg, rgba(255, 255, 255, 0.42), transparent 28% 71%, rgba(81, 231, 255, 0.18)),
+    rgba(255, 244, 214, 0.78);
+  box-shadow:
+    0 0 0 7px rgba(11, 10, 34, 0.72),
+    9px 12px 0 var(--cyan),
+    15px 18px 0 var(--shadow);
+  transform: rotate(-0.3deg);
+}
+
+.wonderswan-shell::before,
+.wonderswan-shell::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 2px solid rgba(18, 17, 47, 0.55);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(255, 249, 233, 0.34);
+}
+
+.wonderswan-shell::before {
+  left: 23px;
+  top: 18px;
+}
+
+.wonderswan-shell::after {
+  left: auto;
+  right: 23px;
+  bottom: 18px;
+}
+
+.wonderswan-left {
+  height: 142px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ws-pad {
+  width: 67px;
+  height: 67px;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: rgba(18, 17, 47, 0.15);
+  box-shadow: inset 0 0 0 2px rgba(18, 17, 47, 0.23);
+  transform: rotate(-8deg);
+}
+
+.ws-pad-y {
+  transform: rotate(7deg);
+}
+
+.ws-pad span {
+  position: absolute;
+  width: 25px;
+  height: 20px;
+  border: 2px solid var(--ink);
+  border-radius: 50% 50% 46% 46%;
+  background: var(--paper);
+  box-shadow: inset 0 -3px 0 rgba(18, 17, 47, 0.18), 2px 3px 0 rgba(18, 17, 47, 0.3);
+}
+
+.ws-pad span:nth-child(1) {
+  top: 2px;
+  left: 21px;
+}
+
+.ws-pad span:nth-child(2) {
+  top: 23px;
+  right: 1px;
+  transform: rotate(90deg);
+}
+
+.ws-pad span:nth-child(3) {
+  bottom: 2px;
+  left: 21px;
+  transform: rotate(180deg);
+}
+
+.ws-pad span:nth-child(4) {
+  top: 23px;
+  left: 1px;
+  transform: rotate(-90deg);
+}
+
+.ws-pad b {
+  position: absolute;
+  right: -3px;
+  bottom: -15px;
+  color: rgba(18, 17, 47, 0.68);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+}
+
+.wonderswan-screen {
+  min-width: 0;
+  min-height: 125px;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  padding: 18px 21px 15px;
+  border: 5px solid var(--ink);
+  border-radius: 8px 10px 13px 8px;
+  color: var(--cream);
+  background:
+    linear-gradient(rgba(255, 244, 214, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 244, 214, 0.045) 1px, transparent 1px),
+    var(--ink);
+  background-size: 21px 21px, 21px 21px, auto;
+  box-shadow:
+    inset 0 0 0 3px var(--violet),
+    0 0 0 3px rgba(255, 249, 233, 0.62);
+}
+
+.wonderswan-screen::after {
+  content: "LCD / NAVIGATION";
+  position: absolute;
+  right: 15px;
+  bottom: 9px;
+  color: rgba(81, 231, 255, 0.28);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.screen-brand-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
 }
 
 .brand {
@@ -139,7 +285,8 @@ main {
 nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  align-self: end;
   font-family: var(--font-geist-mono), monospace;
   font-size: 11px;
   font-weight: 700;
@@ -148,17 +295,117 @@ nav {
 }
 
 nav a {
-  padding: 11px 13px;
-  border: 1px solid transparent;
-  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 244, 214, 0.28);
+  border-radius: 5px;
   transition: 180ms ease;
 }
 
 nav a:hover {
-  color: var(--lime);
-  border-color: var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  border-color: var(--lime);
+  background: var(--lime);
   transform: translateY(-2px);
+}
+
+.wonderswan-right {
+  height: 132px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 2px;
+}
+
+.ws-speaker {
+  width: 62px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 50%;
+  background: rgba(18, 17, 47, 0.1);
+  transform: rotate(-4deg);
+}
+
+.ws-speaker i {
+  width: 3px;
+  height: 29px;
+  display: block;
+  border-radius: 999px;
+  background: rgba(18, 17, 47, 0.68);
+}
+
+.ws-speaker i:nth-child(1),
+.ws-speaker i:nth-child(6) {
+  height: 15px;
+}
+
+.ws-speaker i:nth-child(2),
+.ws-speaker i:nth-child(5) {
+  height: 23px;
+}
+
+.ws-ab-buttons {
+  width: 112px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  transform: rotate(-7deg);
+}
+
+.ws-ab-buttons span {
+  width: 47px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50% 50% 45% 45%;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: inset 0 -4px 0 rgba(18, 17, 47, 0.18), 3px 4px 0 rgba(18, 17, 47, 0.3);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.ws-ab-buttons span:first-child {
+  align-self: end;
+  transform: translateY(6px) rotate(-8deg);
+}
+
+.ws-ab-buttons span:last-child {
+  transform: rotate(8deg);
+}
+
+.ws-sound-start {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+.ws-sound-start i {
+  color: rgba(18, 17, 47, 0.5);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 6px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.ws-sound-start span {
+  width: 29px;
+  height: 9px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: inset 0 -2px 0 rgba(18, 17, 47, 0.2);
 }
 
 .ticker {
@@ -873,8 +1120,10 @@ footer > div:first-child {
     display: none;
   }
 
-  .site-header {
-    grid-template-columns: 1fr auto;
+  .wonderswan-shell {
+    grid-template-columns: 94px minmax(0, 1fr) 104px;
+    gap: 11px;
+    padding-inline: 15px;
   }
 
   .hero {
@@ -912,23 +1161,77 @@ footer > div:first-child {
   }
 
   .site-header {
-    height: auto;
-    min-height: 82px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    padding-block: 15px;
+    margin-top: 17px;
+    margin-bottom: 22px;
+  }
+
+  .wonderswan-shell {
+    min-height: 178px;
+    grid-template-columns: 60px minmax(0, 1fr) 50px;
+    gap: 6px;
+    padding: 13px 9px 19px;
+    border-width: 2px;
+    border-radius: 25px 30px 27px 23px;
+    box-shadow:
+      0 0 0 5px rgba(11, 10, 34, 0.72),
+      5px 7px 0 var(--cyan),
+      9px 12px 0 var(--shadow);
+  }
+
+  .wonderswan-left {
+    height: 142px;
+    transform: scale(0.65);
+  }
+
+  .wonderswan-right {
+    height: 132px;
+    transform: scale(0.72);
+  }
+
+  .wonderswan-screen {
+    min-height: 136px;
+    padding: 12px 10px 11px;
+    border-width: 4px;
+  }
+
+  .wonderswan-screen::after {
+    display: none;
+  }
+
+  .brand {
+    gap: 6px;
+  }
+
+  .brand-glyph {
+    width: 34px;
+    height: 31px;
+    transform: scale(0.74) rotate(-5deg);
+    transform-origin: left center;
+    margin-right: -7px;
+  }
+
+  .brand-word {
+    font-size: 20px;
   }
 
   nav {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 3px;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+    overflow: visible;
+    padding-bottom: 0;
+    font-size: 8px;
   }
 
   nav a {
-    padding-inline: 9px;
+    padding: 7px 4px;
+    text-align: center;
     white-space: nowrap;
+  }
+
+  .ws-sound-start {
+    transform: translateX(-50%) scale(0.72);
   }
 
   .ticker div {
