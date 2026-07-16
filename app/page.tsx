@@ -11,25 +11,18 @@ export default function Home() {
               <span />
               <span />
               <span />
-              <b>X</b>
             </div>
             <div className="ws-pad ws-pad-y">
               <span />
               <span />
               <span />
               <span />
-              <b>Y</b>
             </div>
           </div>
 
           <div className="wonderswan-screen">
             <div className="screen-brand-row">
               <a className="brand" href="#top" aria-label="Yokoi home">
-                <span className="brand-glyph" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </span>
                 <span className="brand-word">YOKOI</span>
               </a>
               <span className="header-note">Tools for a strange little handheld</span>
@@ -51,19 +44,11 @@ export default function Home() {
               <i />
               <i />
               <i />
-              <i />
-              <i />
             </div>
             <div className="ws-ab-buttons">
               <span>B</span>
               <span>A</span>
             </div>
-          </div>
-          <div className="ws-sound-start" aria-hidden="true">
-            <i>SOUND</i>
-            <span />
-            <i>START</i>
-            <span />
           </div>
         </div>
       </header>
