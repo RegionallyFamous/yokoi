@@ -23,6 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = "Yokoi — Tools for a Strange Little Handheld";
   const description =
     "Open WonderSwan projects, hardware experiments, printable objects, and useful downloads.";
+  const socialImage = `${origin}/og.png?v=20260716-wonderswan`;
 
   return {
     metadataBase: new URL(origin),
@@ -39,10 +40,10 @@ export async function generateMetadata(): Promise<Metadata> {
       url: origin,
       images: [
         {
-          url: `${origin}/og.png`,
+          url: socialImage,
           width: 1734,
           height: 907,
-          alt: "Yokoi — tools for a strange little handheld",
+          alt: "Yokoi with an original translucent WonderSwan handheld",
         },
       ],
     },
@@ -50,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [`${origin}/og.png`],
+      images: [socialImage],
     },
   };
 }

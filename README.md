@@ -1,98 +1,29 @@
-# vinext-starter
+# Yokoi website
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+The Vercel-deployed Yokoi site for WonderSwan projects, downloads, and the browser-local English translation patcher.
 
-## Prerequisites
-
-- Node.js `>=22.13.0`
-
-## Quick Start
+## Development
 
 ```bash
 npm install
 npm run dev
-npm run build
+npm test
 ```
 
-This starter does not use `wrangler.jsonc`.
+The production Vercel build uses `npx next build` from `vercel.json`. The repository also retains its vinext build for local and Cloudflare-compatible validation.
 
-## Included Shape
+## ROM patcher
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+The homepage embeds a framework-independent Web Component from `public/rom-patcher/`. Read [ROM_PATCHER.md](ROM_PATCHER.md) before publishing a translation release.
 
-## Workspace Auth Headers
+The catalog intentionally starts empty. The repository contains patching code and metadata structure, but no ROM, BIOS, game-derived test fixture, or unverified public translation.
 
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
+## Translation archive
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+The homepage PDF library is driven by `app/data/translationCatalog.ts`. To add a document:
 
-Treat the full name as optional and fall back to email when it is absent:
+1. Put the finished PDF in `public/translations/` using a stable, descriptive filename.
+2. Add its title, credits, source language, page count, topics, and file path to the catalog.
+3. Build the site and confirm both the browser-reader and download links.
 
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
-```
-
-## Optional Dispatch-Owned ChatGPT Sign-In
-
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+The library searches across document metadata, filters by type, and reveals results in groups of 12 so the page remains manageable as the archive grows. Published PDF responses are cached as immutable, so use a versioned filename when replacing an existing file.

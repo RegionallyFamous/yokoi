@@ -1,46 +1,64 @@
+import RomPatcherEmbed from "./components/RomPatcherEmbed";
+import MotionLab from "./components/MotionLab";
+import CuelumeSoundscape from "./components/CuelumeSoundscape";
+import TranslationLibrary from "./components/TranslationLibrary";
+import { translationCatalog } from "./data/translationCatalog";
+
 const githubOrgUrl = "https://github.com/RegionallyFamous";
 const desktopRepoUrl = "https://github.com/RegionallyFamous/SwanSong-Desktop";
 const coreRepoUrl = "https://github.com/RegionallyFamous/swansong-core";
 const storyForgeRepoUrl = "https://github.com/RegionallyFamous/swansong-story-forge";
 const homebrewReposUrl =
-  "https://github.com/orgs/RegionallyFamous/repositories?q=topic%3Ahomebrew";
+  "https://github.com/RegionallyFamous/SwanSong-Originals";
 
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="header-logo" href="#top" aria-label="Yokoi home">
+      <MotionLab />
+      <CuelumeSoundscape />
+      <header className="site-header" data-reveal>
+        <a
+          className="header-logo"
+          href="#top"
+          aria-label="Yokoi home"
+          data-burst
+          data-cuelume-hover="sparkle"
+          data-cuelume-press="press"
+          data-cuelume-release="release"
+        >
           <img src="/art/yokoi-logo.png" alt="Yokoi" />
         </a>
         <span className="header-tagline">Tools for a strange little handheld</span>
         <nav aria-label="Main navigation">
-          <a href="#projects">Projects</a>
-          <a href={homebrewReposUrl} target="_blank" rel="noreferrer">
-            Homebrew <span aria-hidden="true">↗</span>
-          </a>
-          <a href="#about">About</a>
-          <a href={githubOrgUrl} target="_blank" rel="noreferrer">
+          <a href="#projects" data-cuelume-hover="tick">Projects</a>
+          <a href="#translations" data-cuelume-hover="tick">Library</a>
+          <a href="#patcher" data-cuelume-hover="tick">Patcher</a>
+          <a href="#about" data-cuelume-hover="tick">About</a>
+          <a href={githubOrgUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
             GitHub <span aria-hidden="true">↗</span>
           </a>
         </nav>
       </header>
 
       <div className="ticker" aria-hidden="true">
-        <div>
-          <span>BUILD STRANGE THINGS</span>
-          <b>✦</b>
-          <span>KEEP THE FILES OPEN</span>
-          <b>●</b>
-          <span>PLAY SIDEWAYS</span>
-          <b>✦</b>
-          <span>BUILD STRANGE THINGS</span>
-          <b>●</b>
-          <span>KEEP THE FILES OPEN</span>
+        <div className="ticker-track">
+          {[0, 1].map((group) => (
+            <div className="ticker-group" key={group}>
+              <span>BUILD STRANGE THINGS</span>
+              <b>✦</b>
+              <span>KEEP THE FILES OPEN</span>
+              <b>●</b>
+              <span>PLAY SIDEWAYS</span>
+              <b>✦</b>
+              <span>MAKE TINY WORLDS</span>
+              <b>●</b>
+            </div>
+          ))}
         </div>
       </div>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
+        <div className="hero-copy" data-reveal>
           <div className="eyebrow">
             <span>WORKSHOP FILE</span>
             <strong>001</strong>
@@ -53,11 +71,25 @@ export default function Home() {
             openFPGA work, odd hardware, printable objects, and useful downloads.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#projects">
+            <a
+              className="button button-primary"
+              href="#projects"
+              data-burst
+              data-cuelume-hover="chime"
+              data-cuelume-press="press"
+              data-cuelume-release="release"
+            >
               Browse the projects <span aria-hidden="true">↓</span>
             </a>
-            <a className="button button-ghost" href="#about">
-              What is Yokoi?
+            <a
+              className="button button-ghost"
+              href="#translations"
+              data-burst
+              data-cuelume-hover="chime"
+              data-cuelume-press="press"
+              data-cuelume-release="release"
+            >
+              Read translations
             </a>
           </div>
           <div className="hero-fineprint">
@@ -67,7 +99,7 @@ export default function Home() {
           </div>
         </div>
 
-        <figure className="hero-art">
+        <figure className="hero-art" data-reveal data-tilt="5" data-burst>
           <div className="art-orbit art-orbit-one" aria-hidden="true" />
           <div className="art-orbit art-orbit-two" aria-hidden="true" />
           <img
@@ -84,7 +116,7 @@ export default function Home() {
       </section>
 
       <section className="project-section" id="projects">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div>
             <span className="section-kicker">THE USEFUL PILE</span>
             <h2>Projects</h2>
@@ -96,7 +128,11 @@ export default function Home() {
         </div>
 
         <div className="project-grid">
-          <article className="project-card project-desktop">
+          <article
+            className="project-card project-desktop"
+            data-reveal
+            data-tilt="3.5"
+          >
             <div className="card-topline">
               <span>01 / NATIVE PLAYER</span>
               <span className="status status-desktop">MACOS</span>
@@ -107,6 +143,10 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               aria-label="Open the SwanSong Desktop repository"
+              data-burst
+              data-cuelume-hover="bloom"
+              data-cuelume-press="press"
+              data-cuelume-release="release"
             >
               <img
                 src="/art/swansong-desktop.webp"
@@ -127,13 +167,17 @@ export default function Home() {
             </div>
             <div className="card-actions">
               <span>PUBLIC REPOSITORY</span>
-              <a href={desktopRepoUrl} target="_blank" rel="noreferrer">
+              <a href={desktopRepoUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
                 View on GitHub <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <article className="project-card project-core">
+          <article
+            className="project-card project-core"
+            data-reveal
+            data-tilt="3.5"
+          >
             <div className="card-topline">
               <span>02 / OPENFPGA</span>
               <span className="status status-core">ANALOGUE POCKET</span>
@@ -144,6 +188,10 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               aria-label="Open the SwanSong Core repository"
+              data-burst
+              data-cuelume-hover="bloom"
+              data-cuelume-press="press"
+              data-cuelume-release="release"
             >
               <img
                 src="/art/swansong-core.webp"
@@ -164,13 +212,17 @@ export default function Home() {
             </div>
             <div className="card-actions">
               <span>PUBLIC REPOSITORY</span>
-              <a href={coreRepoUrl} target="_blank" rel="noreferrer">
+              <a href={coreRepoUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
                 View on GitHub <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <article className="project-card project-homebrew">
+          <article
+            className="project-card project-homebrew"
+            data-reveal
+            data-tilt="3.5"
+          >
             <div className="card-topline">
               <span>03 / MAKE GAMES</span>
               <span className="status">HOMEBREW</span>
@@ -180,7 +232,11 @@ export default function Home() {
               href={homebrewReposUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label="Browse the Regionally Famous WonderSwan homebrew repositories"
+              aria-label="Open the SwanSong Originals WonderSwan homebrew repository"
+              data-burst
+              data-cuelume-hover="bloom"
+              data-cuelume-press="press"
+              data-cuelume-release="release"
             >
               <img
                 src="/art/wonderswan-homebrew.webp"
@@ -200,23 +256,79 @@ export default function Home() {
               </ul>
             </div>
             <div className="card-actions card-actions-split">
-              <a href={storyForgeRepoUrl} target="_blank" rel="noreferrer">
+              <a href={storyForgeRepoUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
                 Story Forge <span aria-hidden="true">↗</span>
               </a>
-              <a href={homebrewReposUrl} target="_blank" rel="noreferrer">
-                All homebrew <span aria-hidden="true">↗</span>
+              <a href={homebrewReposUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
+                SwanSong Originals <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
         </div>
       </section>
 
+      <section className="translation-section" id="translations">
+        <div className="translation-heading" data-reveal>
+          <div>
+            <span className="section-kicker">THE TRANSLATED PAPER TRAIL</span>
+            <h2>Translation archive.</h2>
+          </div>
+          <div className="translation-intro">
+            <p>
+              Read technical translations in your browser or keep a PDF copy.
+              Search by title, topic, or system as the shelf grows.
+            </p>
+            <ul aria-label="PDF library features">
+              <li>SEARCHABLE</li>
+              <li>BROWSER READER</li>
+              <li>DOWNLOADABLE</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <TranslationLibrary documents={translationCatalog} />
+        </div>
+
+        <aside className="translation-note" data-reveal>
+          <span aria-hidden="true">i</span>
+          <p>
+            <strong>A translation is a research aid, not a replacement for the source.</strong>{" "}
+            Each edition keeps the original credits and calls out known conflicts or uncertain claims.
+          </p>
+        </aside>
+      </section>
+
+      <section className="patcher-section" id="patcher">
+        <div className="patcher-heading" data-reveal>
+          <div>
+            <span className="section-kicker">PLAY IT IN ENGLISH</span>
+            <h2>Patch a game.</h2>
+          </div>
+          <div className="patcher-intro">
+            <p>
+              Choose a verified translation and add your own legally dumped
+              game file. The original and patched ROM stay entirely in your
+              browser.
+            </p>
+            <ul aria-label="Patcher guarantees">
+              <li>NO UPLOAD</li>
+              <li>EXACT ROM CHECK</li>
+              <li>VERIFIED OUTPUT</li>
+            </ul>
+          </div>
+        </div>
+        <div className="patcher-frame" data-reveal>
+          <RomPatcherEmbed />
+        </div>
+      </section>
+
       <section className="about" id="about">
-        <div className="about-index" aria-hidden="true">
+        <div className="about-index" aria-hidden="true" data-reveal>
           <span>Y</span>
           <span>05</span>
         </div>
-        <div className="about-copy">
+        <div className="about-copy" data-reveal>
           <span className="section-kicker">WHY YOKOI?</span>
           <h2>A workshop, not a storefront.</h2>
           <p>
@@ -225,7 +337,7 @@ export default function Home() {
             exactly what they contain.
           </p>
         </div>
-        <ol className="manifesto">
+        <ol className="manifesto" data-reveal>
           <li>
             <span>01</span>
             <strong>Make the oddness useful.</strong>
@@ -241,7 +353,7 @@ export default function Home() {
         </ol>
       </section>
 
-      <aside className="legal-note">
+      <aside className="legal-note" data-reveal>
         <span className="legal-symbol" aria-hidden="true">!</span>
         <p>
           <strong>No ROMs. No BIOS files.</strong> Yokoi publishes original tools,
@@ -250,14 +362,14 @@ export default function Home() {
         </p>
       </aside>
 
-      <footer>
+      <footer data-reveal>
         <div>
           <span className="footer-brand">YOKOI</span>
           <span>TOOLS FOR A STRANGE LITTLE HANDHELD</span>
         </div>
         <div className="footer-links">
-          <a href="#top">Back to top ↑</a>
-          <a href={githubOrgUrl} target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="#top" data-cuelume-hover="tick">Back to top ↑</a>
+          <a href={githubOrgUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">GitHub ↗</a>
         </div>
       </footer>
     </main>
