@@ -31,7 +31,7 @@ export default function Home() {
         <span className="header-tagline">Tools for a strange little handheld</span>
         <nav aria-label="Main navigation">
           <a href="#projects" data-cuelume-hover="tick">Projects</a>
-          <a href="#translations" data-cuelume-hover="tick">PDF Library</a>
+          <a href="#translations" data-cuelume-hover="tick">Manual Library</a>
           <a href="#patcher" data-cuelume-hover="tick">Patcher</a>
           <a href="#about" data-cuelume-hover="tick">About</a>
           <a href={githubOrgUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
