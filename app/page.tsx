@@ -115,38 +115,6 @@ export default function Home() {
         </figure>
       </section>
 
-      <section className="translation-section" id="translations">
-        <div className="translation-heading" data-reveal>
-          <div>
-            <span className="section-kicker">THE TRANSLATED PAPER TRAIL</span>
-            <h2>Translation archive.</h2>
-          </div>
-          <div className="translation-intro">
-            <p>
-              Read technical translations in your browser or keep a PDF copy.
-              Search by title, topic, or system as the shelf grows.
-            </p>
-            <ul aria-label="PDF library features">
-              <li>SEARCHABLE</li>
-              <li>BROWSER READER</li>
-              <li>DOWNLOADABLE</li>
-            </ul>
-          </div>
-        </div>
-
-        <div data-reveal>
-          <TranslationLibrary documents={translationCatalog} />
-        </div>
-
-        <aside className="translation-note" data-reveal>
-          <span aria-hidden="true">i</span>
-          <p>
-            <strong>A translation is a research aid, not a replacement for the source.</strong>{" "}
-            Each edition keeps the original credits and calls out known conflicts or uncertain claims.
-          </p>
-        </aside>
-      </section>
-
       <section className="project-section" id="projects">
         <div className="section-heading" data-reveal>
           <div>
@@ -297,6 +265,38 @@ export default function Home() {
             </div>
           </article>
         </div>
+      </section>
+
+      <section className="translation-section" id="translations">
+        <div className="translation-heading" data-reveal>
+          <div>
+            <span className="section-kicker">THE TRANSLATED PAPER TRAIL</span>
+            <h2>Translation archive.</h2>
+          </div>
+          <div className="translation-intro">
+            <p>
+              Read technical translations in your browser or keep a PDF copy.
+              Search by title, topic, or system as the shelf grows.
+            </p>
+            <ul aria-label="PDF library features">
+              <li>SEARCHABLE</li>
+              <li>BROWSER READER</li>
+              <li>DOWNLOADABLE</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <TranslationLibrary documents={translationCatalog} />
+        </div>
+
+        <aside className="translation-note" data-reveal>
+          <span aria-hidden="true">i</span>
+          <p>
+            <strong>A translation is a research aid, not a replacement for the source.</strong>{" "}
+            Each edition keeps the original credits and calls out known conflicts or uncertain claims.
+          </p>
+        </aside>
       </section>
 
       <section className="patcher-section" id="patcher">
