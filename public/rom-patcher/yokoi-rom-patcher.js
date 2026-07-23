@@ -4,6 +4,14 @@ const SCRIPT_URL = import.meta.url;
 const WORKER_URL = new URL("./patch-worker.js", SCRIPT_URL);
 const DEFAULT_CATALOG_URL = new URL("./catalog.json", SCRIPT_URL);
 const HASH_PATTERN = /^[a-f0-9]{64}$/;
+const ALLOWED_RELEASE_TAGS = new Set([
+  "ENGLISH",
+  "WS",
+  "WSC",
+  "IPS",
+  "BPS",
+  "CERTIFIED",
+]);
 const DEFAULT_MAX_ROM_BYTES = 256 * 1024 * 1024;
 const DEFAULT_MAX_PATCH_BYTES = 64 * 1024 * 1024;
 
@@ -126,6 +134,25 @@ const styles = `
 
   .release strong { display: block; font-size: 23px; letter-spacing: -0.035em; }
   .release p { margin: 9px 0 0; color: rgba(255, 244, 214, 0.68); line-height: 1.5; }
+  .release-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .release-tags li {
+    padding: 5px 8px;
+    border: 1px solid rgba(255, 244, 214, 0.28);
+    border-radius: 999px;
+    color: var(--rp-cream);
+    background: rgba(255, 244, 214, 0.07);
+    font-family: var(--rp-mono, ui-monospace, monospace);
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+  }
   .release small {
     display: block;
     margin-top: 14px;
@@ -272,6 +299,7 @@ const markup = `
         <div class="release" data-role="release" hidden>
           <strong data-role="release-title"></strong>
           <p data-role="release-meta"></p>
+          <ul class="release-tags" data-role="release-tags" aria-label="Release tags" hidden></ul>
           <small data-role="release-credits"></small>
         </div>
         <p class="empty" data-role="empty" hidden></p>
@@ -325,6 +353,13 @@ function normalizePatch(value, catalogUrl) {
   const sourceSha256 = String(value.sourceSha256 ?? "").toLowerCase();
   const targetSha256 = String(value.targetSha256 ?? "").toLowerCase();
   const sourceSize = Number(value.sourceSize ?? 0);
+  const tags = Array.isArray(value.tags)
+    ? [...new Set(
+      value.tags
+        .map((tag) => String(tag).trim().toUpperCase())
+        .filter((tag) => ALLOWED_RELEASE_TAGS.has(tag)),
+    )].slice(0, 6)
+    : [];
   let patchUrl;
 
   try {
@@ -349,9 +384,11 @@ function normalizePatch(value, catalogUrl) {
     id: String(value.id),
     title: String(value.title),
     originalTitle: String(value.originalTitle ?? ""),
+    language: String(value.language ?? ""),
     system: String(value.system ?? ""),
     revision: String(value.revision ?? ""),
     version: String(value.version ?? ""),
+    tags,
     credits: String(value.credits ?? ""),
     patchUrl: patchUrl.href,
     patchFormat: format,
@@ -383,6 +420,7 @@ class YokoiRomPatcher extends HTMLElement {
     this.release = this.shadowRoot.querySelector('[data-role="release"]');
     this.releaseTitle = this.shadowRoot.querySelector('[data-role="release-title"]');
     this.releaseMeta = this.shadowRoot.querySelector('[data-role="release-meta"]');
+    this.releaseTags = this.shadowRoot.querySelector('[data-role="release-tags"]');
     this.releaseCredits = this.shadowRoot.querySelector('[data-role="release-credits"]');
     this.empty = this.shadowRoot.querySelector('[data-role="empty"]');
     this.ownership = this.shadowRoot.querySelector('[data-role="ownership"]');
@@ -497,14 +535,27 @@ class YokoiRomPatcher extends HTMLElement {
     }
     this.releaseTitle.textContent = this.patch.title;
     this.releaseMeta.textContent = [
-      this.patch.originalTitle,
+      this.patch.originalTitle && this.patch.originalTitle !== this.patch.title
+        ? this.patch.originalTitle
+        : "",
+      this.patch.language ? `${this.patch.language} translation` : "",
       this.patch.system,
       this.patch.revision,
-      this.patch.version ? `Patch ${this.patch.version}` : "",
+      this.patch.version
+        ? `Patch v${this.patch.version.replace(/^v/i, "")}`
+        : "",
     ].filter(Boolean).join(" · ");
+    this.releaseTags.replaceChildren(
+      ...this.patch.tags.map((tag) => {
+        const item = document.createElement("li");
+        item.textContent = tag;
+        return item;
+      }),
+    );
+    this.releaseTags.hidden = this.patch.tags.length === 0;
     this.releaseCredits.textContent = this.patch.credits
       ? `Translation by ${this.patch.credits} · ${this.patch.patchFormat.toUpperCase()}`
-      : `${this.patch.patchFormat.toUpperCase()} release`;
+      : `Verified ${this.patch.patchFormat.toUpperCase()} release`;
     this.release.hidden = false;
   }
 

@@ -68,9 +68,34 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
     ],
   );
+  assert.deepEqual(
+    catalog.patches.map(({ title, language, revision, tags }) => ({
+      title,
+      language,
+      revision,
+      tags,
+    })),
+    [
+      {
+        title: "SD Gundam: Operation U.C.",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
+      {
+        title: "SD Gundam Eiyuu Den: Kishi Densetsu",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
+    ],
+  );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
   assert.match(component, /crypto\.subtle\.digest\("SHA-256"/);
   assert.match(component, /patchUrl\.origin !== location\.origin/);
+  assert.match(component, /ALLOWED_RELEASE_TAGS/);
+  assert.match(component, /data-role="release-tags"/);
+  assert.match(component, /`Patch v\$\{this\.patch\.version/);
   assert.match(engines, /export function applyIps/);
   assert.match(engines, /export function applyBps/);
   assert.match(worker, /new Uint8Array\(event\.data\.source\)/);

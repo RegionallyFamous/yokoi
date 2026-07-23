@@ -39,11 +39,13 @@ Example catalog entry:
   "patches": [
     {
       "id": "game-title-en-1-0-0",
-      "title": "Game Title — English",
+      "title": "Game Title",
       "originalTitle": "Original Japanese Title",
+      "language": "English",
       "system": "WonderSwan Color",
       "revision": "Japan, Rev 1",
       "version": "1.0.0",
+      "tags": ["ENGLISH", "WSC", "BPS", "CERTIFIED"],
       "credits": "Translation Team",
       "patchUrl": "./patches/game-title-en-v1.0.0.bps",
       "patchFormat": "bps",
@@ -55,6 +57,11 @@ Example catalog entry:
   ]
 }
 ```
+
+Use the canonical romanized game title without an `— English` suffix. Language,
+system, patch format, and release status belong in the controlled tag set:
+`ENGLISH`, `WS` or `WSC`, `IPS` or `BPS`, and `CERTIFIED`. Versions are stored
+without a leading `v`; the patcher displays them as `Patch v…`.
 
 `sourceSize` is an optional fast check. Both SHA-256 values are mandatory. Invalid or incomplete entries are ignored by the component.
 
@@ -109,4 +116,3 @@ patcher.addEventListener("rom-patcher:complete", (event) => {
 ```
 
 `rom-patcher:error` contains only the selected patch ID, if any. Do not add analytics that capture filenames, local file data, hashes, or ROM-derived values.
-
