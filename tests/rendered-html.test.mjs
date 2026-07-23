@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
@@ -59,7 +60,14 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.deepEqual(catalog.patches, []);
+  assert.equal(catalog.patches.length, 2);
+  assert.deepEqual(
+    catalog.patches.map((patch) => patch.id),
+    [
+      "sd-gundam-operation-uc-en-v6",
+      "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
+    ],
+  );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
   assert.match(component, /crypto\.subtle\.digest\("SHA-256"/);
   assert.match(component, /patchUrl\.origin !== location\.origin/);
@@ -67,7 +75,48 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.match(engines, /export function applyBps/);
   assert.match(worker, /new Uint8Array\(event\.data\.source\)/);
   assert.doesNotMatch(catalogText, /https?:|base64|romUrl/i);
-  assert.deepEqual(patchFiles, [".gitkeep"]);
+  assert.deepEqual(patchFiles.sort(), [
+    ".gitkeep",
+    "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+    "sd-gundam-operation-uc-en-v6.ips",
+  ]);
+
+  const expectedPatches = new Map([
+    [
+      "sd-gundam-operation-uc-en-v6",
+      {
+        filename: "sd-gundam-operation-uc-en-v6.ips",
+        patchSha256: "9c805b02b24ef6bb48c4d07f8d6adcec7fdbc5daf07766bde6a2af9867266f6a",
+        sourceSha256: "23111bd79a8d39ebffe5a925da5db5865ecb6c53dca851d367aefe1b0e52e969",
+        targetSha256: "1105debcaf3135bd5ebafd5456e43b0251558c571afb60101429a5a69a723741",
+      },
+    ],
+    [
+      "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
+      {
+        filename: "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+        patchSha256: "e555d3a6c43087760f6ea06c4bc27f7f6d6e0992f6eb20fae74fb856c4ee4687",
+        sourceSha256: "9cebbb4e8baf720b817e5863193dcc087dce66bdac87490bb24ea0f79024961e",
+        targetSha256: "8969a302f064aa68500484339d774b8ece04b0b14de6145010d0f75e27fc9636",
+      },
+    ],
+  ]);
+
+  for (const patch of catalog.patches) {
+    const expected = expectedPatches.get(patch.id);
+    assert.ok(expected, `unexpected patch catalog entry ${patch.id}`);
+    assert.equal(patch.patchUrl, `./patches/${expected.filename}`);
+    assert.equal(patch.patchFormat, "ips");
+    assert.equal(patch.sourceSha256, expected.sourceSha256);
+    assert.equal(patch.targetSha256, expected.targetSha256);
+    assert.match(patch.outputFilename, /\.wsc$/);
+
+    const bytes = await readFile(
+      new URL(`../public/rom-patcher/patches/${expected.filename}`, import.meta.url),
+    );
+    assert.equal(bytes.subarray(0, 5).toString("ascii"), "PATCH");
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), expected.patchSha256);
+  }
 
   const vercel = JSON.parse(vercelText);
   assert.equal(vercel.framework, "nextjs");

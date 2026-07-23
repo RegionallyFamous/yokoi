@@ -1,5 +1,33 @@
 {
   "version": 1,
-  "patches": []
+  "patches": [
+    {
+      "id": "sd-gundam-operation-uc-en-v6",
+      "title": "SD Gundam: Operation U.C. — English",
+      "originalTitle": "SD Gundam: Operation U.C.",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "6",
+      "patchUrl": "./patches/sd-gundam-operation-uc-en-v6.ips",
+      "patchFormat": "ips",
+      "sourceSize": 2097152,
+      "sourceSha256": "23111bd79a8d39ebffe5a925da5db5865ecb6c53dca851d367aefe1b0e52e969",
+      "targetSha256": "1105debcaf3135bd5ebafd5456e43b0251558c571afb60101429a5a69a723741",
+      "outputFilename": "sd-gundam-operation-uc-english-v6.wsc"
+    },
+    {
+      "id": "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
+      "title": "SD Gundam Eiyuu Den: Kishi Densetsu — English",
+      "originalTitle": "SD Gundam Eiyuu Den: Kishi Densetsu",
+      "system": "WonderSwan Color",
+      "revision": "Japan · SWJ-BANC0A",
+      "version": "1.0",
+      "patchUrl": "./patches/sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 4194304,
+      "sourceSha256": "9cebbb4e8baf720b817e5863193dcc087dce66bdac87490bb24ea0f79024961e",
+      "targetSha256": "8969a302f064aa68500484339d774b8ece04b0b14de6145010d0f75e27fc9636",
+      "outputFilename": "sd-gundam-eiyuu-den-kishi-densetsu-english-v1.0.wsc"
+    }
+  ]
 }
-
