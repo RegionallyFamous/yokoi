@@ -26,6 +26,16 @@ test("server-renders the Yokoi site, translation archive, and patch station", as
   assert.match(html, /<title>Yokoi — Tools for a Strange Little Handheld<\/title>/i);
   assert.match(html, /id="patcher"/);
   assert.match(html, /id="translations"/);
+  assert.match(html, /Translation Shelf/);
+  assert.match(
+    html,
+    /https:\/\/github\.com\/RegionallyFamous\/SwanSong-Desktop\/releases\/latest/,
+  );
+  assert.match(
+    html,
+    /https:\/\/github\.com\/RegionallyFamous\/SwanSong-Desktop\/releases\/tag\/v0\.9\.0/,
+  );
+  assert.match(html, /0\.9 release notes/);
   assert.match(html, /Translation archive\./);
   assert.match(html, /Wonder Witch Technical Manual/);
   assert.match(html, /Read in browser/);
