@@ -35,7 +35,7 @@ test("server-renders the Yokoi site, translation archive, and patch station", as
     html,
     /https:\/\/github\.com\/RegionallyFamous\/SwanSong-Desktop\/releases\/tag\/v0\.9\.0/,
   );
-  assert.match(html, /Try 0\.9 beta/);
+  assert.match(html, /0\.9 release notes/);
   assert.match(html, /Translation archive\./);
   assert.match(html, /Wonder Witch Technical Manual/);
   assert.match(html, /Read in browser/);

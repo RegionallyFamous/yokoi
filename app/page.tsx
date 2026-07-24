@@ -8,7 +8,7 @@ const githubOrgUrl = "https://github.com/RegionallyFamous";
 const desktopRepoUrl = "https://github.com/RegionallyFamous/SwanSong-Desktop";
 const desktopStableUrl =
   "https://github.com/RegionallyFamous/SwanSong-Desktop/releases/latest";
-const desktopBetaUrl =
+const desktopReleaseUrl =
   "https://github.com/RegionallyFamous/SwanSong-Desktop/releases/tag/v0.9.0";
 const coreRepoUrl = "https://github.com/RegionallyFamous/swansong-core";
 const storyForgeRepoUrl = "https://github.com/RegionallyFamous/swansong-story-forge";
@@ -161,7 +161,7 @@ export default function Home() {
               <h3>SwanSong Desktop</h3>
               <p>
                 A private, native WonderSwan player and translation workbench
-                for Mac. The 0.9 beta adds Translation Shelf for locally
+                for Mac. SwanSong 0.9 adds Translation Shelf for locally
                 verified, separately managed fan translations.
               </p>
               <ul className="chip-list" aria-label="SwanSong Desktop features">
@@ -174,8 +174,8 @@ export default function Home() {
               <a href={desktopStableUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
                 Download stable <span aria-hidden="true">↓</span>
               </a>
-              <a href={desktopBetaUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
-                Try 0.9 beta <span aria-hidden="true">↗</span>
+              <a href={desktopReleaseUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
+                0.9 release notes <span aria-hidden="true">↗</span>
               </a>
               <a href={desktopRepoUrl} target="_blank" rel="noreferrer" data-cuelume-hover="tick">
                 GitHub <span aria-hidden="true">↗</span>
