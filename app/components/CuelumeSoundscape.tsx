@@ -1,21 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { bind, play, setEnabled } from "cuelume";
 
 const soundPreferenceKey = "yokoi-cuelume-enabled";
+const soundPreferenceEvent = "yokoi-cuelume-change";
+
+function subscribeToSoundPreference(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(soundPreferenceEvent, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(soundPreferenceEvent, onStoreChange);
+  };
+}
+
+function getSoundPreference() {
+  return window.localStorage.getItem(soundPreferenceKey) !== "false";
+}
+
+function getServerSoundPreference() {
+  return true;
+}
 
 export default function CuelumeSoundscape() {
-  const [soundOn, setSoundOn] = useState(true);
+  const soundOn = useSyncExternalStore(
+    subscribeToSoundPreference,
+    getSoundPreference,
+    getServerSoundPreference,
+  );
 
   useEffect(() => {
-    const storedPreference = window.localStorage.getItem(soundPreferenceKey);
-    const enabled = storedPreference !== "false";
-
-    setSoundOn(enabled);
-    setEnabled(enabled);
     bind();
   }, []);
+
+  useEffect(() => {
+    setEnabled(soundOn);
+  }, [soundOn]);
 
   const toggleSound = () => {
     const enabled = !soundOn;
@@ -28,8 +50,8 @@ export default function CuelumeSoundscape() {
       setEnabled(false);
     }
 
-    setSoundOn(enabled);
     window.localStorage.setItem(soundPreferenceKey, String(enabled));
+    window.dispatchEvent(new Event(soundPreferenceEvent));
   };
 
   return (
