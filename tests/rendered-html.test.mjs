@@ -70,12 +70,13 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 4);
+  assert.equal(catalog.patches.length, 5);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
       "sd-gundam-operation-uc-en-v6",
       "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
+      "sd-gundam-eiyuu-den-musha-densetsu-en-v1-0",
       "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
       "sd-gundam-g-generation-gather-beat-2-en-v1-0",
     ],
@@ -96,6 +97,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       },
       {
         title: "SD Gundam Eiyuu Den: Kishi Densetsu",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
+      {
+        title: "SD Gundam Eiyuu Den: Musha Densetsu",
         language: "English",
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
@@ -127,6 +134,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+    "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
     "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
     "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
     "sd-gundam-operation-uc-en-v6.ips",
@@ -149,6 +157,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "e555d3a6c43087760f6ea06c4bc27f7f6d6e0992f6eb20fae74fb856c4ee4687",
         sourceSha256: "9cebbb4e8baf720b817e5863193dcc087dce66bdac87490bb24ea0f79024961e",
         targetSha256: "8969a302f064aa68500484339d774b8ece04b0b14de6145010d0f75e27fc9636",
+      },
+    ],
+    [
+      "sd-gundam-eiyuu-den-musha-densetsu-en-v1-0",
+      {
+        filename: "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
+        patchSha256: "63a7ad99c5fc3d790dae8236cd7f6dc9681600a27170ec44c350904a318aecba",
+        sourceSha256: "4cf3d1ee47502a485e2d9be8bd4d963704b0ea5dbee525e6c0e7e9e43efd25c7",
+        targetSha256: "177520157459b81a4d6852ae12b65912a5a7f6c5417b0bb966f62511d8383bf6",
       },
     ],
     [

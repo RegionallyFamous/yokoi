@@ -34,6 +34,22 @@
       "outputFilename": "sd-gundam-eiyuu-den-kishi-densetsu-english-v1.0.wsc"
     },
     {
+      "id": "sd-gundam-eiyuu-den-musha-densetsu-en-v1-0",
+      "title": "SD Gundam Eiyuu Den: Musha Densetsu",
+      "originalTitle": "SD Gundam Eiyuu Den: Musha Densetsu",
+      "language": "English",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      "patchUrl": "./patches/sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 4194304,
+      "sourceSha256": "4cf3d1ee47502a485e2d9be8bd4d963704b0ea5dbee525e6c0e7e9e43efd25c7",
+      "targetSha256": "177520157459b81a4d6852ae12b65912a5a7f6c5417b0bb966f62511d8383bf6",
+      "outputFilename": "sd-gundam-eiyuu-den-musha-densetsu-english-v1.0.wsc"
+    },
+    {
       "id": "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
       "title": "SD Gundam G Generation: Mono-Eye Gundams",
       "originalTitle": "SD Gundam G Generation: Mono-Eye Gundams",
