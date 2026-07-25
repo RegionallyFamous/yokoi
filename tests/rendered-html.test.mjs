@@ -70,13 +70,14 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 3);
+  assert.equal(catalog.patches.length, 4);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
       "sd-gundam-operation-uc-en-v6",
       "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
       "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
+      "sd-gundam-g-generation-gather-beat-2-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -105,6 +106,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
       },
+      {
+        title: "SD Gundam G Generation: Gather Beat 2",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -120,6 +127,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+    "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
     "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
     "sd-gundam-operation-uc-en-v6.ips",
   ]);
@@ -150,6 +158,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "a90a16b00b77d71956067b70029921993eb766afee088e2de35e30831891d51a",
         sourceSha256: "376e4c6b4b81cc3a7dceb15dc4b7d0af04d3e6c8b81e8572569c39d3394870a0",
         targetSha256: "8903e2da3b786e340e630b68b3a82a8fd829cf604178d7b268abdd99e07916e3",
+      },
+    ],
+    [
+      "sd-gundam-g-generation-gather-beat-2-en-v1-0",
+      {
+        filename: "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
+        patchSha256: "c1c3da03271ec862a11d9c9972065512126f30fe7b5461f39bf62c0d80f7144f",
+        sourceSha256: "5ac156cde93438ca1274513c602785de50af1544673fcb27e6d81ddb28276f1d",
+        targetSha256: "037b48271beb2adf592052a573b46459421ccd6a03a619e1ff839e7d7824ac34",
       },
     ],
   ]);

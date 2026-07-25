@@ -53,6 +53,27 @@
       "sourceSha256": "376e4c6b4b81cc3a7dceb15dc4b7d0af04d3e6c8b81e8572569c39d3394870a0",
       "targetSha256": "8903e2da3b786e340e630b68b3a82a8fd829cf604178d7b268abdd99e07916e3",
       "outputFilename": "sd-gundam-g-generation-mono-eye-gundams-english-v1.0.wsc"
+    },
+    {
+      "id": "sd-gundam-g-generation-gather-beat-2-en-v1-0",
+      "title": "SD Gundam G Generation: Gather Beat 2",
+      "originalTitle": "SD Gundam G Generation: Gather Beat 2",
+      "language": "English",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": [
+        "ENGLISH",
+        "WSC",
+        "IPS",
+        "CERTIFIED"
+      ],
+      "patchUrl": "./patches/sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 8388608,
+      "sourceSha256": "5ac156cde93438ca1274513c602785de50af1544673fcb27e6d81ddb28276f1d",
+      "targetSha256": "037b48271beb2adf592052a573b46459421ccd6a03a619e1ff839e7d7824ac34",
+      "outputFilename": "sd-gundam-g-generation-gather-beat-2-english-v1.0.wsc"
     }
   ]
 }
