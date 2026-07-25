@@ -70,12 +70,13 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 2);
+  assert.equal(catalog.patches.length, 3);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
       "sd-gundam-operation-uc-en-v6",
       "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
+      "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -98,6 +99,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
       },
+      {
+        title: "SD Gundam G Generation: Mono-Eye Gundams",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -113,6 +120,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
+    "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
     "sd-gundam-operation-uc-en-v6.ips",
   ]);
 
@@ -133,6 +141,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "e555d3a6c43087760f6ea06c4bc27f7f6d6e0992f6eb20fae74fb856c4ee4687",
         sourceSha256: "9cebbb4e8baf720b817e5863193dcc087dce66bdac87490bb24ea0f79024961e",
         targetSha256: "8969a302f064aa68500484339d774b8ece04b0b14de6145010d0f75e27fc9636",
+      },
+    ],
+    [
+      "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
+      {
+        filename: "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
+        patchSha256: "a90a16b00b77d71956067b70029921993eb766afee088e2de35e30831891d51a",
+        sourceSha256: "376e4c6b4b81cc3a7dceb15dc4b7d0af04d3e6c8b81e8572569c39d3394870a0",
+        targetSha256: "8903e2da3b786e340e630b68b3a82a8fd829cf604178d7b268abdd99e07916e3",
       },
     ],
   ]);
