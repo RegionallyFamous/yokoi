@@ -70,11 +70,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 5);
+  assert.equal(catalog.patches.length, 6);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
       "sd-gundam-operation-uc-en-v6",
+      "mobile-suit-gundam-msvs-en-v1-0",
       "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
       "sd-gundam-eiyuu-den-musha-densetsu-en-v1-0",
       "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
@@ -94,6 +95,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         language: "English",
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
+      {
+        title: "Mobile Suit Gundam MSVS",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
       },
       {
         title: "SD Gundam Eiyuu Den: Kishi Densetsu",
@@ -133,6 +140,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.doesNotMatch(catalogText, /https?:|base64|romUrl/i);
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
+    "mobile-suit-gundam-msvs-en-v1.0.ips",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
     "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
     "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
@@ -148,6 +156,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "9c805b02b24ef6bb48c4d07f8d6adcec7fdbc5daf07766bde6a2af9867266f6a",
         sourceSha256: "23111bd79a8d39ebffe5a925da5db5865ecb6c53dca851d367aefe1b0e52e969",
         targetSha256: "1105debcaf3135bd5ebafd5456e43b0251558c571afb60101429a5a69a723741",
+      },
+    ],
+    [
+      "mobile-suit-gundam-msvs-en-v1-0",
+      {
+        filename: "mobile-suit-gundam-msvs-en-v1.0.ips",
+        patchSha256: "b72d71278c55b55b9f5bcd4f71186227bdd32a11dd4b6cff3943442a753d0a5e",
+        sourceSha256: "d82239a439c51ced0fa7243e21d8f834f70340d072ef55a3ebc73f3d38f560c0",
+        targetSha256: "3730917d3ce4f7b2f56ecd0ffc4dcc00a0a8cae1f6b0957fad5cf4820e4a9db1",
       },
     ],
     [
@@ -195,7 +212,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
     assert.equal(patch.patchFormat, "ips");
     assert.equal(patch.sourceSha256, expected.sourceSha256);
     assert.equal(patch.targetSha256, expected.targetSha256);
-    assert.match(patch.outputFilename, /\.wsc$/);
+    assert.match(patch.outputFilename, /\.wsc?$/);
 
     const bytes = await readFile(
       new URL(`../public/rom-patcher/patches/${expected.filename}`, import.meta.url),

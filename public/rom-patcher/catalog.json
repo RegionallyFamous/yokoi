@@ -18,6 +18,22 @@
       "outputFilename": "sd-gundam-operation-uc-english-v6.wsc"
     },
     {
+      "id": "mobile-suit-gundam-msvs-en-v1-0",
+      "title": "Mobile Suit Gundam MSVS",
+      "originalTitle": "Mobile Suit Gundam MSVS",
+      "language": "English",
+      "system": "WonderSwan",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": ["ENGLISH", "WS", "IPS", "CERTIFIED"],
+      "patchUrl": "./patches/mobile-suit-gundam-msvs-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 2097152,
+      "sourceSha256": "d82239a439c51ced0fa7243e21d8f834f70340d072ef55a3ebc73f3d38f560c0",
+      "targetSha256": "3730917d3ce4f7b2f56ecd0ffc4dcc00a0a8cae1f6b0957fad5cf4820e4a9db1",
+      "outputFilename": "mobile-suit-gundam-msvs-english-v1.0.ws"
+    },
+    {
       "id": "sd-gundam-eiyuu-den-kishi-densetsu-en-v1-0",
       "title": "SD Gundam Eiyuu Den: Kishi Densetsu",
       "originalTitle": "SD Gundam Eiyuu Den: Kishi Densetsu",
