@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 7);
+  assert.equal(catalog.patches.length, 8);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -81,6 +81,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
       "sd-gundam-g-generation-gather-beat-2-en-v1-0",
       "sd-gundam-emotional-jam-en-v1-0",
+      "sd-gundam-g-generation-gather-beat-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -133,6 +134,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan, Rev 3",
         tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
       },
+      {
+        title: "SD Gundam G Generation: Gather Beat",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -152,6 +159,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
     "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
     "sd-gundam-emotional-jam-en-v1.0.ips",
     "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
+    "sd-gundam-g-generation-gather-beat-en-v1.0.ips",
     "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
     "sd-gundam-operation-uc-en-v6.ips",
   ]);
@@ -218,6 +226,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "e4c7742987da9819bcd58287f63a87025df80578bf5916691105e37240ad409f",
         sourceSha256: "abf1d29c1e1ea37e21757911e4c062c206b4c609368b323bc0ee51e005f3b432",
         targetSha256: "66532caecee023a256a08c0b63d4467528f423a4ebbd6736df02265237c3ea89",
+      },
+    ],
+    [
+      "sd-gundam-g-generation-gather-beat-en-v1-0",
+      {
+        filename: "sd-gundam-g-generation-gather-beat-en-v1.0.ips",
+        patchSha256: "193629379762d96a48f1678330d08ac890e3a8e2b6ecae4db3fee0134fa1019b",
+        sourceSha256: "8228cf09d5ee43e6f94f38dd2d33d185707bd49e1ef265191fdb2c6cbfe7366f",
+        targetSha256: "f3d7c0038ed5d852c78ad579e246f965c7c6c46b0ed7912180a31a5ba0ea5528",
       },
     ],
   ]);
