@@ -106,6 +106,27 @@
       "sourceSha256": "5ac156cde93438ca1274513c602785de50af1544673fcb27e6d81ddb28276f1d",
       "targetSha256": "037b48271beb2adf592052a573b46459421ccd6a03a619e1ff839e7d7824ac34",
       "outputFilename": "sd-gundam-g-generation-gather-beat-2-english-v1.0.wsc"
+    },
+    {
+      "id": "sd-gundam-emotional-jam-en-v1-0",
+      "title": "SD Gundam - Emotional Jam",
+      "originalTitle": "SD Gundam - Emotional Jam",
+      "language": "English",
+      "system": "WonderSwan",
+      "revision": "Japan, Rev 3",
+      "version": "1.0",
+      "tags": [
+        "ENGLISH",
+        "WS",
+        "IPS",
+        "CERTIFIED"
+      ],
+      "patchUrl": "./patches/sd-gundam-emotional-jam-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 2097152,
+      "sourceSha256": "abf1d29c1e1ea37e21757911e4c062c206b4c609368b323bc0ee51e005f3b432",
+      "targetSha256": "66532caecee023a256a08c0b63d4467528f423a4ebbd6736df02265237c3ea89",
+      "outputFilename": "sd-gundam-emotional-jam-english-v1.0.ws"
     }
   ]
 }

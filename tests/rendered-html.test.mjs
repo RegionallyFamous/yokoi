@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 6);
+  assert.equal(catalog.patches.length, 7);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -80,6 +80,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-eiyuu-den-musha-densetsu-en-v1-0",
       "sd-gundam-g-generation-mono-eye-gundams-en-v1-0",
       "sd-gundam-g-generation-gather-beat-2-en-v1-0",
+      "sd-gundam-emotional-jam-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -126,6 +127,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
       },
+      {
+        title: "SD Gundam - Emotional Jam",
+        language: "English",
+        revision: "Japan, Rev 3",
+        tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -143,6 +150,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
     "mobile-suit-gundam-msvs-en-v1.0.ips",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
     "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
+    "sd-gundam-emotional-jam-en-v1.0.ips",
     "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
     "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
     "sd-gundam-operation-uc-en-v6.ips",
@@ -201,6 +209,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "c1c3da03271ec862a11d9c9972065512126f30fe7b5461f39bf62c0d80f7144f",
         sourceSha256: "5ac156cde93438ca1274513c602785de50af1544673fcb27e6d81ddb28276f1d",
         targetSha256: "037b48271beb2adf592052a573b46459421ccd6a03a619e1ff839e7d7824ac34",
+      },
+    ],
+    [
+      "sd-gundam-emotional-jam-en-v1-0",
+      {
+        filename: "sd-gundam-emotional-jam-en-v1.0.ips",
+        patchSha256: "e4c7742987da9819bcd58287f63a87025df80578bf5916691105e37240ad409f",
+        sourceSha256: "abf1d29c1e1ea37e21757911e4c062c206b4c609368b323bc0ee51e005f3b432",
+        targetSha256: "66532caecee023a256a08c0b63d4467528f423a4ebbd6736df02265237c3ea89",
       },
     ],
   ]);
