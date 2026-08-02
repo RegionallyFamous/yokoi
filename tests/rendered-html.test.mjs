@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 8);
+  assert.equal(catalog.patches.length, 9);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -82,6 +82,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-g-generation-gather-beat-2-en-v1-0",
       "sd-gundam-emotional-jam-en-v1-0",
       "sd-gundam-g-generation-gather-beat-en-v1-0",
+      "sd-gundam-gashapon-senki-episode-1-en-v1-0-1",
     ],
   );
   assert.deepEqual(
@@ -140,6 +141,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
       },
+      {
+        title: "SD Gundam Gashapon Senki - Episode 1",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -161,6 +168,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
     "sd-gundam-g-generation-gather-beat-2-en-v1.0.ips",
     "sd-gundam-g-generation-gather-beat-en-v1.0.ips",
     "sd-gundam-g-generation-mono-eye-gundams-en-v1.0.ips",
+    "sd-gundam-gashapon-senki-episode-1-en-v1.0.1.ips",
     "sd-gundam-operation-uc-en-v6.ips",
   ]);
 
@@ -235,6 +243,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "193629379762d96a48f1678330d08ac890e3a8e2b6ecae4db3fee0134fa1019b",
         sourceSha256: "8228cf09d5ee43e6f94f38dd2d33d185707bd49e1ef265191fdb2c6cbfe7366f",
         targetSha256: "f3d7c0038ed5d852c78ad579e246f965c7c6c46b0ed7912180a31a5ba0ea5528",
+      },
+    ],
+    [
+      "sd-gundam-gashapon-senki-episode-1-en-v1-0-1",
+      {
+        filename: "sd-gundam-gashapon-senki-episode-1-en-v1.0.1.ips",
+        patchSha256: "6bc4363f9b758e9ef2659eaf985f402fa1058ab4427353bdc6828190f8bdeee7",
+        sourceSha256: "a96c71af822401eddffd99d88fad57565404504a6fdbb9cab7b01ccb9b2e3540",
+        targetSha256: "f3d49f825cc030846dc5dae25a414758f07d572722f1a44357cd3aecd5485132",
       },
     ],
   ]);
