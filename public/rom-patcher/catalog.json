@@ -169,6 +169,27 @@
       "sourceSha256": "a96c71af822401eddffd99d88fad57565404504a6fdbb9cab7b01ccb9b2e3540",
       "targetSha256": "f3d49f825cc030846dc5dae25a414758f07d572722f1a44357cd3aecd5485132",
       "outputFilename": "sd-gundam-gashapon-senki-episode-1-english-v1.0.1.ws"
+    },
+    {
+      "id": "kidou-senshi-gundam-vol-2-jaburo-en-v1-0",
+      "title": "Kidou Senshi Gundam Vol. 2 - Jaburo",
+      "originalTitle": "Kidou Senshi Gundam Vol. 2 - Jaburo",
+      "language": "English",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": [
+        "ENGLISH",
+        "WSC",
+        "IPS",
+        "CERTIFIED"
+      ],
+      "patchUrl": "./patches/kidou-senshi-gundam-vol-2-jaburo-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 8388608,
+      "sourceSha256": "dd9b62efd251053b24ecc33cf2ca7f19feeb2d51dff0dc23d5d838602f118607",
+      "targetSha256": "0d78080181327a9a83986e52b1af1f4bfe26d32b51c9f3e1e22503587795944c",
+      "outputFilename": "kidou-senshi-gundam-vol-2-jaburo-english-v1.0.wsc"
     }
   ]
 }

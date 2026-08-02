@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 9);
+  assert.equal(catalog.patches.length, 10);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -83,6 +83,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-emotional-jam-en-v1-0",
       "sd-gundam-g-generation-gather-beat-en-v1-0",
       "sd-gundam-gashapon-senki-episode-1-en-v1-0-1",
+      "kidou-senshi-gundam-vol-2-jaburo-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -147,6 +148,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WS", "IPS", "CERTIFIED"],
       },
+      {
+        title: "Kidou Senshi Gundam Vol. 2 - Jaburo",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -161,6 +168,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.doesNotMatch(catalogText, /https?:|base64|romUrl/i);
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
+    "kidou-senshi-gundam-vol-2-jaburo-en-v1.0.ips",
     "mobile-suit-gundam-msvs-en-v1.0.ips",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
     "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
@@ -252,6 +260,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "6bc4363f9b758e9ef2659eaf985f402fa1058ab4427353bdc6828190f8bdeee7",
         sourceSha256: "a96c71af822401eddffd99d88fad57565404504a6fdbb9cab7b01ccb9b2e3540",
         targetSha256: "f3d49f825cc030846dc5dae25a414758f07d572722f1a44357cd3aecd5485132",
+      },
+    ],
+    [
+      "kidou-senshi-gundam-vol-2-jaburo-en-v1-0",
+      {
+        filename: "kidou-senshi-gundam-vol-2-jaburo-en-v1.0.ips",
+        patchSha256: "57b964914befe6ebbe586b434d28b4d714dad12db3a84b9e29d2f604cf98ece2",
+        sourceSha256: "dd9b62efd251053b24ecc33cf2ca7f19feeb2d51dff0dc23d5d838602f118607",
+        targetSha256: "0d78080181327a9a83986e52b1af1f4bfe26d32b51c9f3e1e22503587795944c",
       },
     ],
   ]);
