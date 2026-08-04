@@ -211,6 +211,27 @@
       "sourceSha256": "327eedc63abd6cb55c60adcfea33344bdea576567d28914929751b46dbdafe83",
       "targetSha256": "5823a28c2b65c7072e938d54a302230f65a8b7cc5270fb2f113db5cf8e3d18ea",
       "outputFilename": "kidou-senshi-gundam-vol-1-side-7-english-v1.0.wsc"
+    },
+    {
+      "id": "kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1-0",
+      "title": "Kidou Senshi Gundam Vol. 3 - A Baoa Qu",
+      "originalTitle": "Kidou Senshi Gundam Vol. 3 - A Baoa Qu",
+      "language": "English",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": [
+        "ENGLISH",
+        "WSC",
+        "IPS",
+        "PRACTICAL"
+      ],
+      "patchUrl": "./patches/kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 8388608,
+      "sourceSha256": "b60511cd6dcac1a9a7e8ed4775ee3e8426b0982e1fd5646398f7dd579e35cbfd",
+      "targetSha256": "938fb8be6ca307db7ebb38c376ab5ed2cdc0670b494f35b8bb27427930d0afff",
+      "outputFilename": "kidou-senshi-gundam-vol-3-a-baoa-qu-english-v1.0.wsc"
     }
   ]
 }

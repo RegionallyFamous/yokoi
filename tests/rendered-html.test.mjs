@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 11);
+  assert.equal(catalog.patches.length, 12);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -85,6 +85,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-gashapon-senki-episode-1-en-v1-0-1",
       "kidou-senshi-gundam-vol-2-jaburo-en-v1-0",
       "kidou-senshi-gundam-vol-1-side-7-en-v1-0",
+      "kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -161,6 +162,12 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "PRACTICAL"],
       },
+      {
+        title: "Kidou Senshi Gundam Vol. 3 - A Baoa Qu",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "PRACTICAL"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
@@ -178,6 +185,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
     ".gitkeep",
     "kidou-senshi-gundam-vol-1-side-7-en-v1.0.ips",
     "kidou-senshi-gundam-vol-2-jaburo-en-v1.0.ips",
+    "kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1.0.ips",
     "mobile-suit-gundam-msvs-en-v1.0.ips",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
     "sd-gundam-eiyuu-den-musha-densetsu-en-v1.0.ips",
@@ -287,6 +295,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "e39055abec67bfe13cf4ea6616513f1a1774bc550d6d606a8362c4b44c17f999",
         sourceSha256: "327eedc63abd6cb55c60adcfea33344bdea576567d28914929751b46dbdafe83",
         targetSha256: "5823a28c2b65c7072e938d54a302230f65a8b7cc5270fb2f113db5cf8e3d18ea",
+      },
+    ],
+    [
+      "kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1-0",
+      {
+        filename: "kidou-senshi-gundam-vol-3-a-baoa-qu-en-v1.0.ips",
+        patchSha256: "638cf1398c9792996cbf260248f07bfbbd49d131f7ce453bca202440510fb1b6",
+        sourceSha256: "b60511cd6dcac1a9a7e8ed4775ee3e8426b0982e1fd5646398f7dd579e35cbfd",
+        targetSha256: "938fb8be6ca307db7ebb38c376ab5ed2cdc0670b494f35b8bb27427930d0afff",
       },
     ],
   ]);
