@@ -190,6 +190,27 @@
       "sourceSha256": "dd9b62efd251053b24ecc33cf2ca7f19feeb2d51dff0dc23d5d838602f118607",
       "targetSha256": "0d78080181327a9a83986e52b1af1f4bfe26d32b51c9f3e1e22503587795944c",
       "outputFilename": "kidou-senshi-gundam-vol-2-jaburo-english-v1.0.wsc"
+    },
+    {
+      "id": "kidou-senshi-gundam-vol-1-side-7-en-v1-0",
+      "title": "Kidou Senshi Gundam Vol. 1 - Side 7",
+      "originalTitle": "Kidou Senshi Gundam Vol. 1 - Side 7",
+      "language": "English",
+      "system": "WonderSwan Color",
+      "revision": "Japan",
+      "version": "1.0",
+      "tags": [
+        "ENGLISH",
+        "WSC",
+        "IPS",
+        "PRACTICAL"
+      ],
+      "patchUrl": "./patches/kidou-senshi-gundam-vol-1-side-7-en-v1.0.ips",
+      "patchFormat": "ips",
+      "sourceSize": 4194304,
+      "sourceSha256": "327eedc63abd6cb55c60adcfea33344bdea576567d28914929751b46dbdafe83",
+      "targetSha256": "5823a28c2b65c7072e938d54a302230f65a8b7cc5270fb2f113db5cf8e3d18ea",
+      "outputFilename": "kidou-senshi-gundam-vol-1-side-7-english-v1.0.wsc"
     }
   ]
 }

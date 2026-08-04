@@ -16,10 +16,12 @@ The production Vercel build uses `npx next build` from `vercel.json`. The reposi
 
 The homepage embeds a framework-independent Web Component from `public/rom-patcher/`. Read [ROM_PATCHER.md](ROM_PATCHER.md) before publishing a translation release.
 
-The catalog contains only release-certified translations. The repository may
-include immutable IPS or BPS files and source-safe verification metadata, but
-never ROMs, BIOS files, saves, screenshots, extracted game assets, or
-ROM-derived test fixtures.
+The catalog contains verified translations with an explicit `CERTIFIED` or
+`PRACTICAL` release-status tag. Practical releases have exact source/target
+verification and substantial native playtesting, while retaining an honest
+documented coverage limitation. The repository may include immutable IPS or BPS
+files and source-safe verification metadata, but never ROMs, BIOS files, saves,
+screenshots, extracted game assets, or ROM-derived test fixtures.
 
 ## Translation archive
 

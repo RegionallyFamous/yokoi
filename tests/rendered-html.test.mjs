@@ -70,7 +70,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
 
   const catalog = JSON.parse(catalogText);
   assert.equal(catalog.version, 1);
-  assert.equal(catalog.patches.length, 10);
+  assert.equal(catalog.patches.length, 11);
   assert.deepEqual(
     catalog.patches.map((patch) => patch.id),
     [
@@ -84,6 +84,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
       "sd-gundam-g-generation-gather-beat-en-v1-0",
       "sd-gundam-gashapon-senki-episode-1-en-v1-0-1",
       "kidou-senshi-gundam-vol-2-jaburo-en-v1-0",
+      "kidou-senshi-gundam-vol-1-side-7-en-v1-0",
     ],
   );
   assert.deepEqual(
@@ -154,12 +155,19 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         revision: "Japan",
         tags: ["ENGLISH", "WSC", "IPS", "CERTIFIED"],
       },
+      {
+        title: "Kidou Senshi Gundam Vol. 1 - Side 7",
+        language: "English",
+        revision: "Japan",
+        tags: ["ENGLISH", "WSC", "IPS", "PRACTICAL"],
+      },
     ],
   );
   assert.match(component, /customElements\.define\("yokoi-rom-patcher"/);
   assert.match(component, /crypto\.subtle\.digest\("SHA-256"/);
   assert.match(component, /patchUrl\.origin !== location\.origin/);
   assert.match(component, /ALLOWED_RELEASE_TAGS/);
+  assert.match(component, /"PRACTICAL"/);
   assert.match(component, /data-role="release-tags"/);
   assert.match(component, /`Patch v\$\{this\.patch\.version/);
   assert.match(engines, /export function applyIps/);
@@ -168,6 +176,7 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
   assert.doesNotMatch(catalogText, /https?:|base64|romUrl/i);
   assert.deepEqual(patchFiles.sort(), [
     ".gitkeep",
+    "kidou-senshi-gundam-vol-1-side-7-en-v1.0.ips",
     "kidou-senshi-gundam-vol-2-jaburo-en-v1.0.ips",
     "mobile-suit-gundam-msvs-en-v1.0.ips",
     "sd-gundam-eiyuu-den-kishi-densetsu-en-v1.0.ips",
@@ -269,6 +278,15 @@ test("ships a versioned, ROM-free patch catalog and module scripts", async () =>
         patchSha256: "57b964914befe6ebbe586b434d28b4d714dad12db3a84b9e29d2f604cf98ece2",
         sourceSha256: "dd9b62efd251053b24ecc33cf2ca7f19feeb2d51dff0dc23d5d838602f118607",
         targetSha256: "0d78080181327a9a83986e52b1af1f4bfe26d32b51c9f3e1e22503587795944c",
+      },
+    ],
+    [
+      "kidou-senshi-gundam-vol-1-side-7-en-v1-0",
+      {
+        filename: "kidou-senshi-gundam-vol-1-side-7-en-v1.0.ips",
+        patchSha256: "e39055abec67bfe13cf4ea6616513f1a1774bc550d6d606a8362c4b44c17f999",
+        sourceSha256: "327eedc63abd6cb55c60adcfea33344bdea576567d28914929751b46dbdafe83",
+        targetSha256: "5823a28c2b65c7072e938d54a302230f65a8b7cc5270fb2f113db5cf8e3d18ea",
       },
     ],
   ]);

@@ -60,7 +60,11 @@ Example catalog entry:
 
 Use the canonical romanized game title without an `— English` suffix. Language,
 system, patch format, and release status belong in the controlled tag set:
-`ENGLISH`, `WS` or `WSC`, `IPS` or `BPS`, and `CERTIFIED`. Versions are stored
+`ENGLISH`, `WS` or `WSC`, `IPS` or `BPS`, and either `CERTIFIED` or
+`PRACTICAL`. `CERTIFIED` means every release gate passed. `PRACTICAL` means the
+patch has exact source/target verification and substantial native playtesting,
+but its verification receipt records a bounded coverage limitation such as an
+ending or credits sequence that was not naturally reached. Versions are stored
 without a leading `v`; the patcher displays them as `Patch v…`.
 
 `sourceSize` is an optional fast check. Both SHA-256 values are mandatory. Invalid or incomplete entries are ignored by the component.
